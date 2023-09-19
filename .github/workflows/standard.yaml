@@ -1,0 +1,12 @@
+name: Cypress Quiz Two Tests
+on: [push]
+jobs: 
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          spec: cypress/e2e/3-quiz-two/*.cy.js
