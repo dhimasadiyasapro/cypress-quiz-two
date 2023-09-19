@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('login', (username, password) => {
+    cy.get('#Email').type(username)
+    cy.get('#Password').type(password)
+    cy.get('form > .buttons > .button-1').click()
+})
+
+Cypress.Commands.add('generate_email', (name) => {
+    var today = new Date()
+    var emailpref = today.getFullYear() + today.getMonth() + today.getDate() + today.getHours() + today.getMinutes() + today.getSeconds() + name
+    cy.get('#Email').type(emailpref+'@yopmail.net')
+})

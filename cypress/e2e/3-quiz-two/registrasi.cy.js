@@ -1,6 +1,6 @@
 describe('Register Feature', () => {
   beforeEach(() => {
-    cy.visit('https://demowebshop.tricentis.com/')
+    cy.visit(Cypress.config('baseUrl'))
   })
 
   it('Register normally', () => {
@@ -8,11 +8,7 @@ describe('Register Feature', () => {
     cy.get('#gender-male').click()
     cy.get('#FirstName').type('Dhimas')
     cy.get('#LastName').type('Adiyasa')
-    var today = new Date()
-    var emailpref = today.getFullYear() + today.getMonth() 
-    + today.getDate() + today.getHours() + today.getMinutes() 
-    + today.getSeconds() + 'sbc49'
-    cy.get('#Email').type(emailpref+'@yopmail.net')
+    cy.generate_email('sbc49')
     cy.get('#Password').type('Qwerty123$')
     cy.get('#ConfirmPassword').type('Qwerty123$')
     cy.get('#register-button').click()
